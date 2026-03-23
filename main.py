@@ -27,10 +27,23 @@ def can_pass_ncea():
             print(f"{i['name']} ({i['a_credits'] + i['m_credits'] + i['e_credits']} Total Credits)")
 
 def can_be_endorsed():
-    pass
+    for i in students:
+        if i['e_credits'] >= 50:
+            print(f"{i['name']} is eligible for Excellence endorsement ({i['e_credits']} excellence credits)")
+        elif i['m_credits'] >= 50:
+            print(f"{i['name']} is eligible for Merit endorsement ({i['m_credits']} merit credits)")
 
 def students_in_year():
-    pass
+    target_year = int(input("What year would you like to view?: "))
+    students_in_year = False
+    print(f"Students in Year {target_year}:\n")
+    for i in students:
+        if i['year'] == target_year:
+            students_in_year = True
+            print(i['name'])
+    if students_in_year == False:
+        print(f"There are no students in Year {target_year}.")
+ 
 
 def add_credits():
     pass
@@ -40,11 +53,20 @@ def add_student():
 
 def main_menu():
     while True:
-        choice = input("What would you like to do? \na: Print a summary of all students \nb: Print a list of all students who have passed NCEA Level 1\n>").lower()
+        choice = input("""What would you like to do? 
+                       \na: Print a summary of all students 
+                       \nb: Print a list of all students who have passed NCEA Level 1
+                       \nc: Print a list of all students eligible for endorsement
+                       \nd: Print a list of all students in a specificied year group
+                        \n> """).lower()
         if choice == "a":
             summary()
         elif choice == "b":
             can_pass_ncea()
+        elif choice == "c":
+            can_be_endorsed()
+        elif choice == "d":
+            students_in_year()
         else:
             print("That isn't an option. Please re-input the corresponding letter.")
 
