@@ -93,7 +93,15 @@ def add_credits():
         
 
 def add_student():
-    pass
+    nsn = int(input("Please input the NSN of the new student: "))
+    name = input("Please input the name of the new student: ")
+    year = input("Please input the year group of the new student: ")
+    a_credits = int(input("Please input how many achieved credits the student already has: "))
+    m_credits = int(input("Please input how many merit credits the student already has: "))
+    e_credits = int(input("Please input how many excellence credits the student already has: "))
+    students.append({'NSN' : nsn, 'name' : name, 'year': year, 'a_credits' : a_credits, 'm_credits' : m_credits, 'e_credits' : e_credits})
+    print("Student added!")
+
 
 def main_menu():
     while True:
@@ -103,6 +111,8 @@ b: Print a list of all students who have passed NCEA Level 1
 c: Print a list of all students eligible for endorsement
 d: Print a list of all students in a specificied year group
 e: Add credits to a student by their NSN number
+f: Add a new student
+g: Exit the program
                         \n> """).lower()
         if choice == "a":
             summary()
@@ -114,6 +124,10 @@ e: Add credits to a student by their NSN number
             students_in_year()
         elif choice == "e":
             add_credits()
+        elif choice == "f":
+            add_student()
+        elif choice == "g":
+            break
         else:
             print("That isn't an option. Please re-input the corresponding letter.")
 
