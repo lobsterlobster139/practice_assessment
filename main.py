@@ -98,13 +98,27 @@ def add_credits():
         print(f"No student found under NSN {student_NSN}")
         
 
+def add_stu_input_validation(text):
+    while True:
+        try:
+            num = int(input(text))
+            if num >= 0:
+                return num
+            else:
+                print("Invalid number.")
+        except ValueError:
+            print("Please input only integers.")
+
+
+
+
 def add_student():
-    nsn = int(input("Please input the NSN of the new student: "))
-    name = input("Please input the name of the new student: ")
-    year = input("Please input the year group of the new student: ")
-    a_credits = int(input("Please input how many achieved credits the student already has: "))
-    m_credits = int(input("Please input how many merit credits the student already has: "))
-    e_credits = int(input("Please input how many excellence credits the student already has: "))
+    nsn = add_stu_input_validation("Please input the NSN of the new student: ")
+    name = input("Please input the first and last name of the new student: ")
+    year = add_stu_input_validation("Please input the year group of the new student: ")
+    a_credits = add_stu_input_validation("Please input how many achieved credits the student already has: ")
+    m_credits = add_stu_input_validation("Please input how many merit credits the student already has: ")
+    e_credits = add_stu_input_validation("Please input how many excellence credits the student already has: ")
     students.append({'NSN' : nsn, 'name' : name, 'year': year, 'a_credits' : a_credits, 'm_credits' : m_credits, 'e_credits' : e_credits})
     print("Student added!")
 
