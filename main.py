@@ -72,7 +72,13 @@ def add_credits():
             while True:
                 try:
                     credits_added = int(input("Input how many credits you would like to add: "))
-                    break
+                    if credits_added < 0:
+                        print("Invalid credit amount. Please try again.")
+                    elif credits_added > 60:
+                        print("Too many credits added at once. Please re-input.")
+                    else:
+                        break
+                    
                 except ValueError:
                     print("Please enter only integers.")
             while True:
